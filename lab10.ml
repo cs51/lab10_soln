@@ -1,6 +1,6 @@
 (*
                              CS51 Lab 10
-                Time Complexity, Big-O, and Recurrence
+           Time Complexity, Big-O, and Recurrence Equations
  *)
 (*
                                SOLUTION
@@ -13,6 +13,11 @@ complexity, including:
     Big O notation
     Recurrence equations
  *)
+
+(* Provide access to the `Absbook` module, and functions such as
+   `Absbook.call_timed` and `Absbook.range`. You installed the
+   `CS51Utils` package at the beginning of the course. You'll find the
+   `Absbook` module source code in the file `Absbook.ml`. *)
 
 open CS51Utils ;;
 
@@ -40,7 +45,8 @@ let random_list (length : int) : int list =
 (*....................................................................
 Exercise 2: Write a function `time_sort` that, given an `int list ->
 int list` sorting function and a list of integers, returns a `float`
-indicating how long in seconds the sort takes.
+indicating how long in seconds the sort takes. Hint: You may find the
+`Absbook.call_timed` function to be helpful.
 ....................................................................*)
 
 let time_sort (sort : int list -> int list) (lst : int list) : float =
@@ -102,10 +108,11 @@ module MergeSort : SORT =
              merge lt (sort lt first) (sort lt second) 
   end ;;
 
-(*....................................................................
+  (*....................................................................
 Exercise 3: How many functions does the `InsertionSort` module
 provide? How many functions does the `MergeSort` module
-provide. Define the variables below accordingly.
+provide. Define the variables below accordingly (replacing the `-1`
+values).
 ....................................................................*)
 
 (* Both modules provide a function
@@ -118,6 +125,7 @@ provide. Define the variables below accordingly.
 
 let insertion_sort_provides : int = 1 ;;
 let merge_sort_provides : int = 1 ;;
+
 (*....................................................................
 Exercise 4: Compare the time it takes for merge sort and insertion
 sort to run on lists of random ints of length 10 and 1000. We've
@@ -129,15 +137,15 @@ included an implementation of merge and insertion sort below.
 
      time_sort (InsertSort.sort ( < )) (random_list 10);;
      time_sort (InsertSort.sort ( < )) (random_list 1000) ;;
-     time_sort (MergeSort.sort ( < )) (random_list 10) ;;
-     time_sort (MergeSort.sort ( < )) (random_list 1000) ;;
+     time_sort (MergeSort.sort  ( < )) (random_list 10) ;;
+     time_sort (MergeSort.sort  ( < )) (random_list 1000) ;;
 
    However, this method of comparing the functions will not be
    entirely accurate: merge sort and insertion sort are running on
    different input lists. Though the lists are the same length, they
    may be unsorted to a different degree. Just as when conducting
    scientific experiments in a laboratory, we need to keep everything
-   but our value of interest (in this case the sorting function)
+   but our subject of interest (in this case the sorting function)
    constant to create a fair comparison.
 
    Thus, our method of filling in the table looked as below:
@@ -147,8 +155,8 @@ included an implementation of merge and insertion sort below.
 
      time_sort (InsertSort.sort (<)) shortlist ;;
      time_sort (InsertSort.sort (<)) longlist ;;
-     time_sort (MergeSort.sort (<)) shortlist ;;
-     time_sort (MergeSort.sort (<)) longlist ;;
+     time_sort (MergeSort.sort  (<)) shortlist ;;
+     time_sort (MergeSort.sort  (<)) longlist ;;
 
    Using this method, we generated the following times:
 
@@ -353,7 +361,7 @@ let exercise7 = 1000 ;;
 (* An additional nice property of big-O is the ability to disregard
 lower-order terms of a function. In the reading, we found that:
 
-    Time_mergesort(n) = c * n logn + d
+    Time_mergesort(n) = c * n log n + d
 
 In this exercise, we will work with a version of MergeSort that will
 add an additional k * n term to the completion time of MergeSort. *)
@@ -819,7 +827,9 @@ let time_multiply (mult : int -> int -> int)
 Exercise 14: Fill in the table below:
 ....................................................................*)
    
-(*                     |    15 * 50           |  1241342345 *
+(* Here's what we found. Of course, you're results might vary a bit.
+
+                       |    15 * 50           |  1241342345 *
                        |                      |  3237461243
                        |    Time (seconds)    |  Time (seconds)
 -----------------------------------------------------------------
@@ -831,7 +841,7 @@ Karatsuba              |     0.00000787       |  0.0000281
 -----------------------------------------------------------------
 OCaml Native ( * )     |     0.00000119       |  ~0
 -----------------------------------------------------------------
- *)
+   *)
   
 (* Questions to consider:
 
