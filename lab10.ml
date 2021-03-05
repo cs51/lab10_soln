@@ -108,7 +108,7 @@ module MergeSort : SORT =
              merge lt (sort lt first) (sort lt second) 
   end ;;
 
-  (*....................................................................
+(*....................................................................
 Exercise 3: How many functions does the `InsertionSort` module
 provide? How many functions does the `MergeSort` module
 provide. Define the variables below accordingly (replacing the `-1`
@@ -511,8 +511,8 @@ We saw in the reading that the `insert` function has the following
 recurrence equations:
 
 T_insert(0) = c
-T_insert(n+1) = max(k_1 + T_insert(n), k_2) ≤ k_1 + T_insert(n) + k_2
-              = k + T_insert(n)
+T_insert(n) = max(k_1 + T_insert(n-1), k_2) ≤ k_1 + T_insert(n-1) + k_2
+            = k + T_insert(n-1)
 
 We express these equations with the following Ocaml function. Rather
 than write two equations, as you might on paper, we write the base
