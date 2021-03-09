@@ -14,10 +14,12 @@ complexity, including:
     Recurrence equations
  *)
 
-(* Provide access to the `Absbook` module, and functions such as
-   `Absbook.call_timed` and `Absbook.range`. You installed the
-   `CS51Utils` package at the beginning of the course. You'll find the
-   `Absbook` module source code in the file `Absbook.ml`. *)
+(* We open `CS51Utils` to provide access to the `Absbook` module, and
+   functions such as `Absbook.call_timed` and `Absbook.range`. You
+   installed the `CS51Utils` package at the beginning of the
+   course. You'll find the `Absbook` module source code in the file
+   `absbook.ml` in the CS51 utilities repository at
+   <https://github.com/cs51/utils>. *)
 
 open CS51Utils ;;
 
@@ -29,9 +31,27 @@ and insertion sort by timing these functions on the same inputs of
 various lengths. The ability to perform empirical analysis of programs
 will often prove useful.
 
-Throughout this lab you may find various functions in the `Absbook`
-module to be helpful, as well as OCaml's `Random` library module
-<https://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.html>.
+    Throughout this lab you may find various functions in the
+    `Absbook` module to be helpful, as well as OCaml's `Random`
+    library module
+    <https://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.html>.
+
+    In order to make use of the `Absbook` module from within `ocaml`
+    or `utop`, you may need to inform these REPLs of information about
+    the module's location. If you have trouble accessing `Absbook`
+    functions, try the commands in the following example:
+
+	% ocaml
+		OCaml version 4.11.1
+
+	# #use "topfind" ;;
+	...
+	- : unit = ()
+	# #require "CS51Utils" ;;
+	...
+	# open CS51Utils ;;
+	# Absbook.call_timed ;;
+	- : ?count:int -> ('a -> 'b) -> 'a -> 'b * float = <fun>
 
 ......................................................................
 Exercise 1: Write a function `random_list` that creates a list of a
