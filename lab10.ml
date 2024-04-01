@@ -259,7 +259,7 @@ type complexity =
     | Cubic
     | Exponential ;;
 
-(* f(x) = 5^x + x^3 *)
+(* f(x) = 2^x + x^3 *)
 let exercise5a () : complexity list =
   [Exponential] ;;
 
